@@ -8,8 +8,8 @@ type VertexesWeight = {
 
 enum Type {
   Eulerian = "Eulerian",
-  SemiEulirian = "Semi-Eulirian",
-  NotEulirian = "Not Eulirian",
+  SemiEulirian = "Semi-Eulerian",
+  NotEulirian = "Not Eulerian",
 }
 
 export class GraphHelper {
