@@ -8,8 +8,8 @@ type VertexesWeight = {
 
 enum Type {
   Eulerian = "Eulerian",
-  SemiEulirian = "SemiEulirian",
-  NotEulirian = "NotEulirian",
+  SemiEulirian = "Semi-Eulirian",
+  NotEulirian = "Not Eulirian",
 }
 
 export class GraphHelper {
@@ -56,8 +56,8 @@ export class GraphHelper {
   }
 
   private getVertextWeight(edges: Edge[], vertex: Vertex): number {
-    return edges.filter((edge) => {
-      edge.vertexes.map((vertex) => vertex.id).includes(vertex.id);
-    }).length;
+    return edges.filter((edge) =>
+      edge.vertexes.map((vertex) => vertex.id).includes(vertex.id)
+    ).length;
   }
 }

@@ -19,7 +19,7 @@ semiEulerian.addVertexes([semiVertex1, semiVertex2, semiVertex3, semiVertex4]);
 semiEulerian.addEdges([semiEdge1, semiEdge2, semiEdge3, semiEdge4, semiEdge5]);
 const wrappedSemiEulerian = new GraphHelper(semiEulerian);
 
-console.log("Semi-eulerian is:" + wrappedSemiEulerian.type);
+console.log("First graph is: " + wrappedSemiEulerian.type);
 
 // Euleriano
 const eulerian = new Graph(6);
@@ -37,6 +37,7 @@ edges.push(new Edge([vertexes[1], vertexes[2]]));
 edges.push(new Edge([vertexes[2], vertexes[3]]));
 edges.push(new Edge([vertexes[3], vertexes[4]]));
 edges.push(new Edge([vertexes[4], vertexes[2]]));
+edges.push(new Edge([vertexes[2], vertexes[5]]));
 edges.push(new Edge([vertexes[5], vertexes[0]]));
 
 eulerian.addVertexes(vertexes);
@@ -44,4 +45,4 @@ eulerian.addEdges(edges);
 
 const wrappedEulerian = new GraphHelper(eulerian);
 
-console.log("Eulerian is:" + wrappedEulerian.type);
+console.log("Second graph is: " + wrappedEulerian.type);

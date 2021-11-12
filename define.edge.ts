@@ -9,5 +9,11 @@ export class Edge {
       return;
     }
     this.vertexes = vertexes;
+    this.updateVertexesNeighbours(vertexes);
+  }
+
+  private updateVertexesNeighbours(vertexes: Vertex[]) {
+    vertexes[0].addNeighbours([vertexes[1]]);
+    vertexes[1].addNeighbours([vertexes[0]]);
   }
 }
