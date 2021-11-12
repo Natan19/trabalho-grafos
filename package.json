@@ -9,6 +9,6 @@
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "start": "yarn tsc index.ts"
+    "start": "yarn tsc && node index.js"
   }
 }
