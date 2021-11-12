@@ -3,23 +3,23 @@ import { Edge } from "./define.edge";
 
 export class Graph {
   maxVertexes: number;
-  vertexes: Vertex[];
-  edges: Edge[];
+  vertexes: Vertex[] = [];
+  edges: Edge[] = [];
 
   constructor(maxVertexes: number) {
     this.maxVertexes = maxVertexes;
   }
 
   addVertexes(vertexes: Vertex[]) {
-    if (this.vertexes.length >= this.maxVertexes) {
+    if (this.vertexes.length > this.maxVertexes) {
       console.log("Graph has reached its limit of vertexes");
       return;
     }
-    if (this.vertexes.length + vertexes.length >= this.maxVertexes) {
+    if (this.vertexes.length + vertexes.length > this.maxVertexes) {
       console.log("Cannot add vertexes, as it would surpass de vertex limit.");
       return;
     }
-    this.vertexes = vertexes;
+    this.vertexes = [...this.vertexes, ...vertexes];
   }
 
   addEdges(edges: Edge[]) {

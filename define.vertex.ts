@@ -1,6 +1,6 @@
 export class Vertex {
   id: number;
-  neighbours: Vertex[];
+  neighbours: Vertex[] = [];
 
   constructor(id: number) {
     this.id = id;
