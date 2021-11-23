@@ -1,6 +1,7 @@
 export class Vertex {
-  id: number;
-  neighbours: Vertex[] = [];
+  public id: number;
+  public weight?: number;
+  public neighbours: Vertex[] = [];
 
   constructor(id: number) {
     this.id = id;
@@ -9,4 +10,5 @@ export class Vertex {
   addNeighbours(neighbours: Vertex[]) {
     this.neighbours = [...this.neighbours, ...neighbours];
   }
+
 }
