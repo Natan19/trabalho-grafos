@@ -52,32 +52,33 @@ export class Graph {
     const beginningAndEnding = this.getBeginningAndEndingVertexes();
 
     const paths: Vertex[][] = [];
+      
     for (const vertex of beginningAndEnding) {
-      const path = this.getPathFromVertex(vertex);
+      const path = this.getPathFromVertex(vertex, beginningAndEnding.find(v => v.id !== vertex.id)!);
       if (path.length === this.vertexes.length) {
         paths.push(path);
       }
     }
 
     return paths;
- 
   }
 
-  private getPathFromVertex(vertex: Vertex): Vertex[] {
+  private getPathFromVertex(vertexInit: Vertex, vertexEnd: Vertex): Vertex[] {
     const path: Vertex[] = [];
-    let currentVertex = vertex;
+    let currentVertex = vertexInit;
+
     path.push(currentVertex);
-    while(currentVertex.id !== vertex.id) {
-      currentVertex = this.getNextVertex(currentVertex);
+
+    while(currentVertex.id !== vertexInit.id) {
+      currentVertex = this.getNextVertex(currentVertex, vertexEnd);
       path.push(currentVertex);
     }
+
     return path;
   }
 
-  private getNextVertex(vertex: Vertex): Vertex {
-    // return vertex.neighbours.find((neighbour: Vertex) => {
-    //   return neighbour.weight! % 2 == 0 && neighbour.id !== vertex.id;
-    // });
+  private getNextVertex(vertex: Vertex, vertexEnd: Vertex): Vertex {
+    return vertex.neighbours.filter((neighbour) => neighbour.id !== vertexEnd.id)[0]
   }
 
   private setVertexesWeight(vertexes: Vertex[]): void {
@@ -97,16 +98,16 @@ export class Graph {
     ).length;
   }
 
-  private isEulerian = (vertexes: Vertex[]): boolean => {
+  public isEulerian = (vertexes: Vertex[]): boolean => {
     // A eurilian vertice need to have an even number of weight to every vertex
     return vertexes.map(vertex => vertex.weight!).every(
       (weight) => {
-        weight % 2 === 0
+        return weight % 2 === 0
       }
     );
   }
   
-  private isSemiEulerian = (vertexes: Vertex[]): boolean => {
+  public isSemiEulerian = (vertexes: Vertex[]): boolean => {
     // A semi eurilian vertice need to have in the maximum two vertex with an odd weight
     return vertexes.map(vertex => vertex.weight!).filter((weight) => weight % 2 != 0).length === 2
   }

@@ -35,7 +35,6 @@ edges.push(new Edge([vertexes[4], vertexes[2]]));
 edges.push(new Edge([vertexes[2], vertexes[5]]));
 edges.push(new Edge([vertexes[5], vertexes[0]]));
 
-
 const eulerian = new Graph(vertexes, edges);
 console.log("Second graph is: " + eulerian.getType());
 
